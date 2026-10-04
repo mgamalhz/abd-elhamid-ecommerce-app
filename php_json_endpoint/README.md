@@ -128,6 +128,4 @@ php -S localhost:8000
 
 ## Pull Request
 
-```text
 PASTE_PULL_REQUEST_LINK_HERE
-```
