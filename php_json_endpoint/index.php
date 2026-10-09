@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/vendor/autoload.php';
-
-use App\Models\CartItem;
-use App\Models\Product;
-
 header('Content-Type: application/json');
 
 function respond(array $data, int $statusCode): never
