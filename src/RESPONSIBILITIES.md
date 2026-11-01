@@ -14,6 +14,7 @@ It represents a product and stores its basic information.
 ### Main methods
 
 * `__construct()` — initializes the product.
+* `getName()` — returns the product's name.
 * `getPrice()` — returns the product's price.
 
 ### Responsibility that does **not** belong to it
@@ -131,17 +132,31 @@ It applies a percentage-based discount to a total value.
 
 # Quick Overview
 
-| Class / Interface    | Main Responsibility                         | Data Held                |
+| Class / Interface | Main Responsibility | Data Held |
 | -------------------- | ------------------------------------------- | ------------------------ |
-| `Product`            | Represents a product                        | Name, price              |
-| `CartItem`           | Represents a product and quantity in a cart | Product, quantity        |
-| `Cart`               | Manages cart items and calculates totals    | Items, discount strategy |
-| `DiscountStrategy`   | Defines the discount contract               | None                     |
-| `NoDiscount`         | Applies no discount                         | None                     |
-| `PercentageDiscount` | Applies a percentage discount               | Percentage               |
-
+| `Product` | Represents a product | Name, price |
+| `CartItem` | Represents a product and quantity in a cart | Product, quantity |
+| `Cart` | Manages cart items and calculates totals | Items, discount strategy |
+| `DiscountStrategy` | Defines the discount contract | None |
+| `NoDiscount` | Applies no discount | None |
+| `PercentageDiscount` | Applies a percentage discount | Percentage |
 
 ## Easiest and hardest responsibilities to place
 
-* Easiest one : product class responsibility
-* hardest one : cart class responsibility
+* Easiest one: Product class responsibility.
+* Hardest one: Cart class responsibility.
+
+## Self-Review
+
+After reviewing the responsibilities, I found that each class has a clearly defined responsibility, and the responsibilities are appropriately separated.
+
+The only modification needed was adding `getName()` to the `Product` class's main methods. This method allows other parts of the application to retrieve a product's name without accessing its property directly.
+
+No other code changes were needed because:
+
+* `Product` only manages basic product information.
+* `CartItem` handles the product quantity and its subtotal.
+* `Cart` manages cart items and delegates discount calculations to a discount strategy.
+* `DiscountStrategy` defines a common contract, while `NoDiscount` and `PercentageDiscount` provide specific implementations.
+
+The separation of responsibilities is clear, and no class appears to be taking on responsibilities that belong to another class.
